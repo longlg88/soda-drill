@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/longlg88/soda-drill/generator"
+	"github.com/longlg88/soda-drill"
 )
 
 func main() {
