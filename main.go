@@ -13,7 +13,6 @@ func main() {
 		config.AddInput(s)
 		print(i)
 	}
-	
 	circleciConfig := new(bytes.Buffer)
 	config.WriteCircleciConfig(circleciConfig)
 }
