@@ -3,17 +3,19 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/longlg88/soda-drill/generator"
+	"soda-drill/src/generator"
 )
 
 func main() {
 	var regions = []string{"accolade", "picpay"}
 
-	config := New()
-	for i, s := range regions {
+	config := generator.New()
+	for _, s := range regions {
 		config.AddInput(s)
-		fmt.Println(i)
 	}
+	
+	fmt.Println()
 	circleciConfig := new(bytes.Buffer)
 	config.WriteCircleciConfig(circleciConfig)
+	fmt.Println(circleciConfig.String())
 }

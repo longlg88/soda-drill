@@ -3,6 +3,6 @@ package generator
 var circleciConfigTemplate = `version: 2
 jobs:
   {{- range .Inputs}}
-  bake-image-{{ .region }}
+  bake-image-{{ .Region }}
     <<: *default-bake-job
-	{{- end}}`
+	{{ end -}}`

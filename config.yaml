@@ -1,0 +1,8 @@
+version: 2
+jobs:
+  bake-image-accolade
+    <<: *default-bake-job
+	
+  bake-image-picpay
+    <<: *default-bake-job
+	

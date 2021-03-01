@@ -2,6 +2,8 @@ package generator
 
 import (
 	"io"
+	"os"
+	"log"
 	"text/template"
 )
 
@@ -15,19 +17,30 @@ func New() CircleciConfig {
 }
 
 type CircleciConfigGenerator struct {
-	Inputs []string
+	Inputs []LogPipe
+}
+
+type LogPipe struct {
+	Region string
 }
 
 func (config *CircleciConfigGenerator) AddInput(regions string) CircleciConfig {
-	config.Inputs = append(config.Inputs, regions)
+	config.Inputs = append(config.Inputs, LogPipe{
+		Region: regions,
+	})
 
 	return config
 }
 
 func (config *CircleciConfigGenerator) WriteCircleciConfig(wr io.Writer) error {
-	tmpl, err := template.New("config.yaml").Parse(circleciConfigTemplate)
+	f, err := os.Create("./config.yaml")
+	if err != nil {
+		log.Println("create file: ", err)
+	}
+	
+	tmpl, err := template.New("config").Parse(circleciConfigTemplate)
 	if err != nil {
 		return err
 	}
-	return tmpl.Execute(wr, config)
+	return tmpl.Execute(f, config)
 }
