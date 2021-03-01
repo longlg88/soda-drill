@@ -2,7 +2,8 @@ package main
 
 import (
 	"bytes"
-	"github.com/longlg88/soda-drill"
+	"fmt"
+	"github.com/longlg88/soda-drill/generator"
 )
 
 func main() {
@@ -11,7 +12,7 @@ func main() {
 	config := New()
 	for i, s := range regions {
 		config.AddInput(s)
-		print(i)
+		fmt.Println(i)
 	}
 	circleciConfig := new(bytes.Buffer)
 	config.WriteCircleciConfig(circleciConfig)
