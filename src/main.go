@@ -2,7 +2,7 @@ package main
 
 import (
 	"bytes"
-	"soda-drill/src/generator"
+	"github.com/longlg88/soda-drill"
 )
 
 func main() {
