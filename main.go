@@ -13,7 +13,6 @@ func main() {
 	for _, s := range regions {
 		config.AddInput(s)
 	}
-	
 	fmt.Println()
 	circleciConfig := new(bytes.Buffer)
 	config.WriteCircleciConfig(circleciConfig)
